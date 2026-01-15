@@ -1,0 +1,245 @@
+.range-slider {
+  height: 4px !important;
+
+  .range-slider__range {
+    background: var(--main) !important;
+  }
+  .range-slider__thumb {
+    background: var(--white) !important;
+    border: 2px solid var(--main);
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+#shoppingCart.show .tf-progress-bar .value {
+  width: 60% !important;
+}
+.menu-item-li.active {
+  .menu-link-text {
+    color: var(--primary) !important;
+    &::before {
+      width: 100%;
+      left: 0;
+      right: auto;
+      background-color: var(--primary) !important;
+    }
+  }
+}
+.sub-nav-link.active,
+.mb-menu-link.active,
+.sub-nav-link.active {
+  color: var(--primary) !important;
+}
+@media only screen and (max-width: 767px) {
+  .footer .footer-col-block .tf-collapse-content {
+    overflow-y: hidden;
+    display: block;
+    height: 0px;
+    transition: 0.5s;
+  }
+}
+.tfSubscribeMsg {
+  display: none;
+  max-height: 0px;
+  // transition: 0.4s;
+  overflow: hidden;
+  &.active {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-height: 180px;
+    display: block;
+  }
+}
+.swiper-pagination-lock {
+  display: none;
+}
+.show-mx-1200 {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .show-mx-1200 {
+    display: block !important;
+  }
+  .hidden-mx-1200 {
+    display: none;
+  }
+}
+.tf-toolbar-bottom {
+  overflow-x: hidden;
+}
+.mw-100p-scroll {
+  max-width: 100%;
+  overflow-y: auto;
+}
+.mw-100p-hidden,
+.tf-product-info-wrap {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.tabFilter {
+  transform: translateY(30px) !important;
+  opacity: 0 !important;
+  transition: 0.3s !important;
+  &.filtered {
+    transform: translateY(0px) !important;
+    opacity: 1 !important;
+  }
+}
+.icv__label {
+  height: fit-content !important;
+}
+.home-gaming-testimonials {
+  @media (max-width: 1200px) {
+    .nav-prev-testimonial {
+      left: 300px !important;
+      bottom: 0;
+      top: unset;
+    }
+    .nav-next-testimonial {
+      right: 300px !important;
+      bottom: 0;
+      top: unset;
+    }
+  }
+}
+
+.bookstore-product-heading {
+  @media (max-width: 580px) {
+    flex-wrap: wrap;
+    .btn-line {
+      margin-top: 20px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .wrap-sidebar-mobile {
+    display: none;
+  }
+}
+
+
+/* Filter Tags Styling */
+.filter-tag {
+  font-size: 0.675rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.filter-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.filter-tag strong {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.filter-tag .btn-close {
+  transition: transform 0.2s ease;
+}
+
+.filter-tag .btn-close:hover {
+  transform: scale(1.2);
+}
+
+/* Applied Filters Section */
+.applied-filters-section {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+  border: 1px solid #dee2e6;
+}
+
+.filter-tags-wrapper {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.filter-tags-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-tags-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.filter-tags-wrapper::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.filter-tags-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Active Filter Summary in Sidebar */
+.active-filters-summary {
+  border: 1px solid #dee2e6;
+}
+
+.active-filters-summary .badge {
+  cursor: default;
+}
+
+/* Form Select with Active Filter */
+.form-select.border-primary {
+  border-width: 2px !important;
+}
+
+.form-select.border-info {
+  border-width: 2px !important;
+}
+
+.form-select.border-success {
+  border-width: 2px !important;
+}
+
+.form-select.border-warning {
+  border-width: 2px !important;
+}
+
+.form-select.border-secondary {
+  border-width: 2px !important;
+}
+
+/* Purple badge for color */
+.bg-purple {
+  background-color: #6f42c1 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .filter-tag {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem !important;
+  }
+
+  .applied-filters-section {
+    padding: 0.75rem;
+  }
+}
+
+@media (min-width: 992px) {
+    .page-title {
+        padding: 90px 0 90px;
+        background-size: cover;
+        background-position: center;
+    }
+
+}
+
+.page-title .heading {
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+ul.breadcrumbs li {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 22px;
+}
