@@ -132,7 +132,6 @@ export default function RootLayout({ children }) {
           <QuickAdd />
           <Compare />
           <MobileMenu />
-
           <NewsLetterModal />
           <SearchModal />
           <SizeGuide />

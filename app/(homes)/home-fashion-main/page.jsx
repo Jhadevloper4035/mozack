@@ -1,5 +1,5 @@
 import Footer1 from "@/components/footers/Footer1";
-import Header2 from "@/components/headers/Header2";
+import Header2 from "@/components/headers/Header1";
 import BannerTab from "@/components/common/BannerTab";
 import Collections from "@/components/homes/fashion-main/Collections";
 import Collections2 from "@/components/homes/fashion-main/Collections2";

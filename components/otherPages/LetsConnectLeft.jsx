@@ -59,8 +59,7 @@ export default function LetsConnect() {
             <p className="description">
               Step into the Mozaic Experience Center and explore a world of
               premium PVC laminates, contemporary designs, and advanced surface
-              solutions. Crafted with precision and innovation, our collections
-              help transform ideas into inspiring, functional spaces.
+              solutions. 
             </p>
 
             {/* CTA Buttons */}
@@ -168,7 +167,7 @@ export default function LetsConnect() {
           padding: 1.75rem;
           border-radius: 4px;
           box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-          max-height: 300px;
+          max-height: 360px;
           display: flex;
           flex-direction: column;
         }
@@ -201,7 +200,6 @@ export default function LetsConnect() {
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
-          overflow: hidden;
         }
 
         /* Button Group */

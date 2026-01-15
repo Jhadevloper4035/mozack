@@ -76,9 +76,9 @@ export default function NewsLetterModal() {
           <div className="modal-top">
             <Image
               className="lazyload"
-              data-src="/images/section/newsletter.jpg"
+              data-src="/images/popUp.jpg"
               alt="/images"
-              src="/images/section/newsletter.jpg"
+              src="/images/popUp.jpg"
               width={660}
               height={440}
             />
@@ -91,9 +91,6 @@ export default function NewsLetterModal() {
             <p className="text-btn-uppercase fw-4 font-2">
               Subscribe To Our Newletter!
             </p>
-            <h5>
-              Receive 10% OFF your next order, exclusive offers &amp; more!
-            </h5>
             <div
               className={`tfSubscribeMsg  footer-sub-element ${
                 showMessage ? "active" : ""
@@ -116,6 +113,20 @@ export default function NewsLetterModal() {
               className="form-newsletter-subscribe"
             >
               <div id="subscribe-content">
+                 <input
+                  type="text"
+                  name="name"
+                  id="subscribe-name"
+                  placeholder="Enter your Name"
+                  required
+                />
+                 <input
+                  type="text"
+                  name="phone"
+                  id="subscribe-phone"
+                  placeholder="Enter your phone number "
+                  required
+                />
                 <input
                   type="email"
                   name="email"
@@ -128,7 +139,7 @@ export default function NewsLetterModal() {
                   id="subscribe-button"
                   className="btn-style-2 radius-12 w-100 justify-content-center"
                 >
-                  <span className="text text-btn-uppercase">SUBSCRIBE</span>
+                  <span className="text text-btn-uppercase">Send</span>
                 </button>
               </div>
               <div id="subscribe-msg" />
@@ -149,11 +160,13 @@ export default function NewsLetterModal() {
                   <i className="icon icon-instagram" />
                 </a>
               </li>
-              <li>
-                <a href="#" className="social-pinterest">
-                  <i className="icon icon-pinterest" />
+
+               <li>
+                <a href="#" className="social-whatsapp">
+                  <i className="icon icon-whatsapp" />
                 </a>
               </li>
+
             </ul>
           </div>
         </div>

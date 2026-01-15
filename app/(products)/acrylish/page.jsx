@@ -6,23 +6,23 @@ import Link from "next/link";
 import React from "react";
 
 export const metadata = {
-  title: "PVC Products | Sky Decor",
-  description: "Browse our collection of PVC laminate products",
+  title: "Acrylish Laminates | Mozack",
+  description: "Browse our collection of Acrylish laminate products",
 };
 
-export default function ShopPvcPage() {
+export default function ShopAcrylishPage() {
   return (
     <>
       <Topbar6 bgColor="bg-main" />
       <Header1 />
       <div
         className="page-title"
-        style={{ backgroundImage: "url(/images/section/page-title.jpg)" }}
+        style={{ backgroundImage: "url(/images/banner/2.jpg)" }}
       >
         <div className="container-full">
           <div className="row">
             <div className="col-12">
-              <h3 className="heading text-center">PVC Products</h3>
+              <h3 className="heading text-center">Acrylish Laminates</h3>
               <ul className="breadcrumbs d-flex align-items-center justify-content-center">
                 <li>
                   <Link className="link" href={`/`}>
@@ -32,15 +32,13 @@ export default function ShopPvcPage() {
                 <li>
                   <i className="icon-arrRight" />
                 </li>
-                <li>PVC Products</li>
+                <li>Acrylish Laminates</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-
-      <Products productType="pvc" />
-      
+      <Products productpage="Acrylish Laminates" />
       <Footer1 />
     </>
   );

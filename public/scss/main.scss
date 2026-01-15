@@ -1,4 +1,9 @@
 @use "sass:meta";
+
+body{
+  overflow-x: hidden !important;
+}
+
 // Fonts
 @import "/fonts/fonts.css";
 @import "/fonts/font-icons.css";

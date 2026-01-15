@@ -63,6 +63,10 @@
   --backdrop: rgba(24, 24, 24, 0.2);
 }
 
+body{
+  overflow-x: hidden !important;
+}
+
 /*---------- Reset css styles ----------- */
 html,
 body,

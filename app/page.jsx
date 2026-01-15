@@ -10,6 +10,7 @@ import Cta from "@/components/otherPages/LetsConnect";
 import CtaLfet from "@/components/otherPages/LetsConnectLeft";
 import Hero from "@/components/homes/home-1/Hero";
 import Products from "@/components/common/Products3";
+import FeaturesSection from '@/components/common/FeaturesSection';
 
 export const metadata = {
   title: "Home || MOZAIC-Artistic PVC Laminates",
@@ -27,6 +28,7 @@ export default function HomePage() {
       <Cta />
       <About />
       <Ecatlouge />
+      <FeaturesSection/>
       <CtaLfet />
       <Blogs />
       <Footer />

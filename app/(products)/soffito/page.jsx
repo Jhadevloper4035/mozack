@@ -18,7 +18,7 @@ export default function ShopSoffittoPage() {
       
       <div
         className="page-title"
-        style={{ backgroundImage: "url(/images/section/page-title.jpg)" }}
+        style={{ backgroundImage: "url(/images/banner/4.jpg)" }}
       >
         <div className="container-full">
           <div className="row">
@@ -41,7 +41,7 @@ export default function ShopSoffittoPage() {
       </div>
       
 
-     <Products productType="Soffitto Panels" />
+     <Products productpage="Soffitto Panels" />
       <Footer1 />
     </>
   );

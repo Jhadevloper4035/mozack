@@ -6,8 +6,6 @@ export default function Sorting({ allProps }) {
 
   const sortOptions = [
     "Default",
-    "Price Ascending",
-    "Price Descending",
     "Title Ascending",
     "Title Descending",
   ];

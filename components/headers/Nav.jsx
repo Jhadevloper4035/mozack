@@ -138,10 +138,7 @@ export default function Nav() {
                       />
                     </Link>
                     <div className="content">
-                      
-                      <div>
-                       
-                      </div>
+                      <div></div>
                     </div>
                   </div>
                 </div>
@@ -160,37 +157,10 @@ export default function Nav() {
           Career
         </a>
       </li>
-      <li
-        className={`menu-item position-relative ${
-          [...blogLinks].some(
-            (elm) => elm.href.split("/")[1] == pathname.split("/")[1]
-          )
-            ? "active"
-            : ""
-        } `}
-      >
-        <a href="#" className="item-link">
-          Blog
-          <i className="icon icon-arrow-down" />
+      <li className="menu-item">
+        <a href="/" className="item-link">
+          Blogs
         </a>
-        <div className="sub-menu submenu-default">
-          <ul className="menu-list">
-            {blogLinks.map((link, index) => (
-              <li
-                key={index}
-                className={`menu-item-li ${
-                  pathname.split("/")[1] == link.href.split("/")[1]
-                    ? "active"
-                    : ""
-                } `}
-              >
-                <Link href={link.href} className="menu-link-text">
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
       </li>
       {/* <li
         className={`menu-item position-relative ${

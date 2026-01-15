@@ -1,35 +1,39 @@
+
 export const blogPosts = [
   {
     id: 1,
-    imgSrc: "/images/blog/blog-grid-1.jpg",
-    alt: "Blog Image 1",
-    date: "13 August",
-    title: "Top 10 Summer Fashion Trends You Can't Miss in 2024",
+    imgSrc: "/images/blog/blog1.jpg",
+    alt: "Acrylic Laminates Product Launch Event",
+    date: "18 August 2024",
+    title: "Acrylic Laminates Product Launch & Showcase",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed vulputate massa.",
+      "Discover high-gloss acrylic laminates with live demonstrations, finish comparisons, and expert guidance on modern interior applications.",
     delay: "0s",
   },
   {
     id: 2,
-    imgSrc: "/images/blog/blog-grid-8.jpg",
-    alt: "Blog Image 2",
-    date: "13 August",
-    title: "How to Effortlessly Style Your Office Wear for a Modern Look",
+    imgSrc: "/images/blog/blog2.jpg",
+    alt: "PVC Laminates Experience Event",
+    date: "25 August 2024",
+    title: "PVC Laminates Design & Durability Experience",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed vulputate massa.",
+      "Explore premium PVC laminates designed for durability and style, featuring real-life applications for kitchens, wardrobes, and furniture.",
     delay: "0.1s",
   },
   {
     id: 3,
-    imgSrc: "/images/blog/blog-grid-6.jpg",
-    alt: "Blog Image 3",
-    date: "13 August",
-    title: "Sustainable Fashion: Eco-Friendly Brands to Watch This Year",
+    imgSrc: "/images/blog/blog3.jpg",
+    alt: "Sofiito Laminates Design Workshop Event",
+    date: "02 September 2024",
+    title: "Sofiito Laminates Design Innovation Workshop",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed vulputate massa.",
+      "An exclusive workshop highlighting Sofiito laminate textures, finishes, and color palettes curated for contemporary interior spaces.",
     delay: "0.2s",
   },
 ];
+
+
+
 
 export const blogPosts2 = [
   {

@@ -61,40 +61,32 @@ const getColorCode = (colorName) => {
   return colorMap[colorName] || "#808080";
 };
 
-export default function FilterSidebar({ allProps  }) {
+export default function FilterSidebar({ allProps }) {
   const {
-    productType,
     category,
     subCategory,
     texture,
     selectedSize,
-    setProductType,
     setCategory,
     setSubCategory,
     setTexture,
     setSelectedSize,
-    getAvailableProductTypes,
     getAvailableCategories,
     getAvailableSubCategories,
     getAvailableTextures,
     getAvailableSizes,
-    clearFilter,
+ 
     // Additional filters
-    price,
-    setPrice,
     availability,
     setAvailability,
     color,
     setColor,
-    size,
-    setSize,
     brands,
     setBrands,
   } = allProps;
 
-  const { getAllBrands, getAllColors, getAllSizes } = useProductStore();
+  const { getAllBrands, getAllColors } = useProductStore();
 
-  const availableProductTypes = getAvailableProductTypes();
   const availableCategories = getAvailableCategories();
   const availableSubCategories = getAvailableSubCategories();
   const availableTextures = getAvailableTextures();
@@ -104,16 +96,6 @@ export default function FilterSidebar({ allProps  }) {
   const allBrands = getAllBrands();
   const allColors = getAllColors();
 
-  const hasCascadingFilters =
-    productType || category || subCategory || texture || selectedSize;
-  const hasOtherFilters =
-    brands.length > 0 ||
-    color !== "All" ||
-    size !== "All" ||
-    availability !== "All" ||
-    price[0] !== 0 ||
-    price[1] !== 1000;
-
   const availabilityOptions = [
     { label: "All", value: "All" },
     { label: "In Stock", value: { value: true } },
@@ -121,19 +103,8 @@ export default function FilterSidebar({ allProps  }) {
   ];
 
   return (
-    <div className="tf-shop-sidebar wrap-sidebar-mobile">
-      {/* {(hasCascadingFilters || hasOtherFilters) && (
-        <div className="mb-3">
-          <button
-            onClick={clearFilter}
-            className="tf-btn btn-outline animate-hover-btn w-100"
-          >
-            <span className="icon icon-close me-2" />
-            Clear All Filters
-          </button>
-        </div>
-      )} */}
 
+    <div className="tf-shop-sidebar wrap-sidebar-mobile">
       {/* SMART CASCADING FILTER SECTION */}
       <div className="widget-facet wd-categories">
         <div
@@ -148,42 +119,6 @@ export default function FilterSidebar({ allProps  }) {
         </div>
         <div id="cascading" className="collapse show">
           <div className="widget-content">
-
-
-
-            {/* Product Type */}
-            <div className="form-group mb-3">
-              <div className="d-flex justify-content-between align-items-center mb-2">
-                <label className="mb-0 fw-5">Product Type</label>
-                {productType && (
-                  <button
-                    onClick={() => setProductType("")}
-                    className="btn btn-sm btn-link text-danger p-0"
-                    style={{ fontSize: "0.75rem" }}
-                  >
-                    Clear
-                  </button>
-                )}
-              </div>
-
-
-              <select
-                className={`form-select ${productType ? "border-primary" : ""}`}
-                value={productType}
-                onChange={(e) => setProductType(e.target.value)}
-              >
-                <option value="">All ({availableProductTypes.length})</option>
-                {availableProductTypes.map((type, index) => (
-                  <option key={index} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-
-
-
             {/* Category */}
             <div className="form-group mb-3">
               <div className="d-flex justify-content-between align-items-center mb-2">
@@ -297,7 +232,6 @@ export default function FilterSidebar({ allProps  }) {
                 ))}
               </select>
             </div>
-
           </div>
         </div>
       </div>
@@ -457,61 +391,6 @@ export default function FilterSidebar({ allProps  }) {
           )}
         </div>
       </div>
-
-      {/* Active Filters Summary in Sidebar */}
-      {hasCascadingFilters && (
-        <div className="active-filters-summary mt-3 p-3 bg-light rounded">
-          <div className="d-flex justify-content-between align-items-center mb-2">
-            <small className="fw-bold text-muted">Active Filters</small>
-            <button
-              onClick={clearFilter}
-              className="btn btn-sm btn-link text-danger p-0"
-              style={{ fontSize: "0.75rem" }}
-            >
-              Clear All
-            </button>
-          </div>
-          <div className="d-flex flex-wrap gap-1">
-            {productType && (
-              <span
-                className="badge bg-primary"
-                style={{ fontSize: "0.75rem" }}
-              >
-                {productType}
-              </span>
-            )}
-            {category && (
-              <span className="badge bg-info" style={{ fontSize: "0.75rem" }}>
-                {category}
-              </span>
-            )}
-            {subCategory && (
-              <span
-                className="badge bg-success"
-                style={{ fontSize: "0.75rem" }}
-              >
-                {subCategory}
-              </span>
-            )}
-            {texture && (
-              <span
-                className="badge bg-warning text-dark"
-                style={{ fontSize: "0.75rem" }}
-              >
-                {texture}
-              </span>
-            )}
-            {selectedSize && (
-              <span
-                className="badge bg-secondary"
-                style={{ fontSize: "0.75rem" }}
-              >
-                {selectedSize}
-              </span>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
