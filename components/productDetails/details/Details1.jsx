@@ -1,10 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Slider1 from "../sliders/Slider1";
-import ColorSelect from "../ColorSelect";
-import SizeSelect from "../SizeSelect";
-import QuantitySelect from "../QuantitySelect";
-import Image from "next/image";
 import { useContextElement } from "@/context/Context";
 import ProductStikyBottom from "../ProductStikyBottom";
 export default function Details1({ product }) {
@@ -12,13 +8,10 @@ export default function Details1({ product }) {
   const [quantity, setQuantity] = useState(1);
   const {
     addProductToCart,
-    isAddedToCartProducts,
     addToWishlist,
     isAddedtoWishlist,
     isAddedtoCompareItem,
     addToCompareItem,
-    cartProducts,
-    updateQuantity,
   } = useContextElement();
 
   return (
@@ -44,192 +37,186 @@ export default function Details1({ product }) {
                 <div className="tf-product-info-list other-image-zoom">
                   <div className="tf-product-info-heading">
                     <div className="tf-product-info-name">
-                      <div className="text text-btn-uppercase">{product.texture}</div>
-                      <h3 className="name">{product.productName} <br/> {product.productType} {product.category} </h3>
+                      {product.texture && (
+                        <span style={{
+                          display: "inline-block",
+                          fontSize: "10px",
+                          fontWeight: "700",
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          color: "#fff",
+                          background: "#222",
+                          borderRadius: "3px",
+                          padding: "4px 10px",
+                          marginBottom: "12px",
+                        }}>
+                          {product.texture}
+                        </span>
+                      )}
+                      <h3 className="name" style={{ lineHeight: "1.25", marginBottom: "10px" }}>
+                        {product.productName}
+                      </h3>
                       <div className="sub">
-                        <div className="tf-product-info-rate">
-                          <div className="list-star">
-                            <i className="icon icon-star" />
-                            <i className="icon icon-star" />
-                            <i className="icon icon-star" />
-                            <i className="icon icon-star" />
-                            <i className="icon icon-star" />
-                          </div>
-                          <div className="text text-caption-1">
-                            (134 reviews)
-                          </div>
-                        </div>
-                        <div className="tf-product-info-sold">
-                          <i className="icon icon-lightning" />
-                          <div className="text text-caption-1">
-                            180&nbsp;viewers in last&nbsp;32&nbsp;hours
+                        <div className="tf-product-info-sold" style={{ alignItems: "center" }}>
+                          <i className="icon icon-lightning" style={{ marginRight: "6px", opacity: 0.5 }} />
+                          <div className="text text-caption-1" style={{ color: "#999", letterSpacing: "0.04em" }}>
+                            {[product.productType, product.category, product.subCategory]
+                              .filter(Boolean)
+                              .join(" · ")}
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="tf-product-info-desc">
-                      <p>
-                        The garments labelled as Committed are products that
-                        have been produced using sustainable fibres or
-                        processes, reducing their environmental impact.
-                      </p>
-                    </div>
                   </div>
-                  <div className="tf-product-info-choose-option">
-                    <div>
-                      <div className="tf-product-info-by-btn mb_10">
+
+                     {/* Product detail table */}
+                  <div className="tf-product-info-choose-option mt_20">
+                    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                      <tbody>
+                        {[
+                          { label: "Product Code", value: product.productCode?.toUpperCase() },
+                          { label: "Design Name", value: product.designName?.toUpperCase() },
+                          { label: "Product Type", value: product.productType },
+                          { label: "Category", value: product.category },
+                          { label: "Sub-Category", value: product.subCategory },
+                          { label: "Texture", value: product.texture },
+                          { label: "Texture Code", value: product.textureCode },
+                          { label: "Size", value: product.size },
+                          { label: "Width", value: product.width },
+                        ]
+                          .filter((r) => r.value)
+                          .map((row) => (
+                            <tr key={row.label} style={{ borderBottom: "1px solid #efefef" }}>
+                              <td style={{
+                                padding: "11px 0",
+                                fontWeight: "600",
+                                textTransform: "uppercase",
+                                fontSize: "10px",
+                                letterSpacing: "0.1em",
+                                color: "#aaa",
+                                width: "45%",
+                              }}>
+                                {row.label}
+                              </td>
+                              <td style={{
+                                padding: "11px 0",
+                                textAlign: "right",
+                                fontSize: "13px",
+                                color: "#1a1a1a",
+                                fontWeight: "500",
+                                letterSpacing: "0.01em",
+                              }}>
+                                {row.value}
+                              </td>
+                            </tr>
+                          ))}
+                      </tbody>
+                    </table>
+
+                    {/* Primary CTA buttons */}
+                    <div className="d-flex gap-3 mt-4">
+                      <a
+                        href="#ask_question"
+                        data-bs-toggle="modal"
+                        className="btn-style-2 flex-grow-1 text-btn-uppercase fw-6"
+                        style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "14px 20px" }}
+                      >
+                        <i className="icon-mail" style={{ fontSize: "15px" }} />
+                        Send Enquiry
+                      </a>
+                      {product.pdfUrlPath && (
                         <a
-                          onClick={() => addProductToCart(product.id, quantity)}
-                          className="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart"
+                          href={product.pdfUrlPath}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn-style-3 flex-grow-1 text-btn-uppercase"
+                          style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "14px 20px" }}
                         >
-                          Product Enquiry
+                          <i className="icon-file-text" style={{ fontSize: "15px" }} />
+                          Product Catalogue
+                        </a>
+                      )}
+                    </div>
+
+                    {/* Secondary actions row */}
+                    <div style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginTop: "20px",
+                      paddingTop: "18px",
+                      borderTop: "1px solid #f0f0f0",
+                    }}>
+                      <div style={{ display: "flex", gap: "8px" }}>
+                        <a
+                          onClick={() => addToWishlist(product.id)}
+                          style={{
+                            display: "flex", alignItems: "center", gap: "6px",
+                            padding: "7px 16px",
+                            border: `1px solid ${isAddedtoWishlist(product.id) ? "#c8102e" : "#e0e0e0"}`,
+                            borderRadius: "50px", cursor: "pointer",
+                            fontSize: "10px", fontWeight: "700",
+                            textTransform: "uppercase", letterSpacing: "0.08em",
+                            color: isAddedtoWishlist(product.id) ? "#c8102e" : "#555",
+                            transition: "all 0.2s", textDecoration: "none",
+                          }}
+                        >
+                          <span className="icon icon-heart" style={{ fontSize: "13px" }} />
+                          {isAddedtoWishlist(product.id) ? "Saved" : "Save"}
                         </a>
                         <a
                           href="#compare"
                           data-bs-toggle="offcanvas"
                           aria-controls="compare"
                           onClick={() => addToCompareItem(product.id)}
-                          className="box-icon hover-tooltip compare btn-icon-action"
+                          style={{
+                            display: "flex", alignItems: "center", gap: "6px",
+                            padding: "7px 16px",
+                            border: `1px solid ${isAddedtoCompareItem(product.id) ? "#222" : "#e0e0e0"}`,
+                            borderRadius: "50px", cursor: "pointer",
+                            fontSize: "10px", fontWeight: "700",
+                            textTransform: "uppercase", letterSpacing: "0.08em",
+                            color: isAddedtoCompareItem(product.id) ? "#222" : "#555",
+                            transition: "all 0.2s", textDecoration: "none",
+                          }}
                         >
-                          <span className="icon icon-gitDiff" />
-                          <span className="tooltip text-caption-2">
-                            {isAddedtoCompareItem(product.id)
-                              ? "Already compared"
-                              : "Compare"}
-                          </span>
-                        </a>
-                        <a
-                          onClick={() => addToWishlist(product.id)}
-                          className="box-icon hover-tooltip text-caption-2 wishlist btn-icon-action"
-                        >
-                          <span className="icon icon-heart" />
-                          <span className="tooltip text-caption-2">
-                            {isAddedtoWishlist(product.id)
-                              ? "Already Wishlished"
-                              : "Wishlist"}
-                          </span>
+                          <span className="icon icon-gitDiff" style={{ fontSize: "13px" }} />
+                          {isAddedtoCompareItem(product.id) ? "Comparing" : "Compare"}
                         </a>
                       </div>
-                      <a href="#" className="btn-style-3 text-btn-uppercase">
-                       Product Detail
-                      </a>
-                    </div>
-                    <div className="tf-product-info-help">
-                      <div className="tf-product-info-extra-link">
-                        <a
-                          href="#delivery_return"
-                          data-bs-toggle="modal"
-                          className="tf-product-extra-icon"
-                        >
-                          <div className="icon">
-                            <i className="icon-shipping" />
-                          </div>
-                          <p className="text-caption-1">
-                            Delivery &amp; Return
-                          </p>
-                        </a>
+                      <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
                         <a
                           href="#ask_question"
                           data-bs-toggle="modal"
-                          className="tf-product-extra-icon"
+                          style={{
+                            display: "flex", alignItems: "center", gap: "5px",
+                            fontSize: "10px", fontWeight: "700", color: "#999",
+                            textTransform: "uppercase", letterSpacing: "0.08em",
+                            textDecoration: "none",
+                          }}
                         >
-                          <div className="icon">
-                            <i className="icon-question" />
-                          </div>
-                          <p className="text-caption-1">Ask A Question</p>
+                          <i className="icon-question" style={{ fontSize: "13px" }} />
+                          Ask a Question
                         </a>
+                        <span style={{ width: "1px", height: "14px", background: "#e0e0e0" }} />
                         <a
                           href="#share_social"
                           data-bs-toggle="modal"
-                          className="tf-product-extra-icon"
+                          style={{
+                            display: "flex", alignItems: "center", gap: "5px",
+                            fontSize: "10px", fontWeight: "700", color: "#999",
+                            textTransform: "uppercase", letterSpacing: "0.08em",
+                            textDecoration: "none",
+                          }}
                         >
-                          <div className="icon">
-                            <i className="icon-share" />
-                          </div>
-                          <p className="text-caption-1">Share</p>
+                          <i className="icon-share" style={{ fontSize: "13px" }} />
+                          Share
                         </a>
                       </div>
-                      <div className="tf-product-info-time">
-                        <div className="icon">
-                          <i className="icon-timer" />
-                        </div>
-                        <p className="text-caption-1">
-                          Estimated Delivery:&nbsp;&nbsp;<span>12-26 days</span>
-                          (International), <span>3-6 days</span> (United States)
-                        </p>
-                      </div>
-                      <div className="tf-product-info-return">
-                        <div className="icon">
-                          <i className="icon-arrowClockwise" />
-                        </div>
-                        <p className="text-caption-1">
-                          Return within <span>45 days</span> of purchase. Duties
-                          &amp; taxes are non-refundable.
-                        </p>
-                      </div>
-                      <div className="dropdown dropdown-store-location">
-                        <div
-                          className="dropdown-title dropdown-backdrop"
-                          data-bs-toggle="dropdown"
-                          aria-haspopup="true"
-                        >
-                          <div className="tf-product-info-view link">
-                            <div className="icon">
-                              <i className="icon-map-pin" />
-                            </div>
-                            <span>View Store Information</span>
-                          </div>
-                        </div>
-                        <div className="dropdown-menu dropdown-menu-end">
-                          <div className="dropdown-content">
-                            <div className="dropdown-content-heading">
-                              <h5>Store Location</h5>
-                              <i className="icon icon-close" />
-                            </div>
-                            <div className="line-bt" />
-                            <div>
-                              <h6>Fashion Modave</h6>
-                              <p>Pickup available. Usually ready in 24 hours</p>
-                            </div>
-                            <div>
-                              <p>766 Rosalinda Forges Suite 044,</p>
-                              <p>Gracielahaven, Oregon</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                    <ul className="tf-product-info-sku">
-                      <li>
-                        <p className="text-caption-1">SKU:</p>
-                        <p className="text-caption-1 text-1">53453412</p>
-                      </li>
-                      <li>
-                        <p className="text-caption-1">Vendor:</p>
-                        <p className="text-caption-1 text-1">Modave</p>
-                      </li>
-                      <li>
-                        <p className="text-caption-1">Available:</p>
-                        <p className="text-caption-1 text-1">Instock</p>
-                      </li>
-                      <li>
-                        <p className="text-caption-1">Categories:</p>
-                        <p className="text-caption-1">
-                          <a href="#" className="text-1 link">
-                            Clothes
-                          </a>
-                          ,
-                          <a href="#" className="text-1 link">
-                            women
-                          </a>
-                          ,
-                          <a href="#" className="text-1 link">
-                            T-shirt
-                          </a>
-                        </p>
-                      </li>
-                    </ul>
                   </div>
+                  {/* /Product detail table */}
+               
                 </div>
               </div>
             </div>

@@ -2,7 +2,6 @@ import Footer from "@/components/footers/Footer1";
 import Header from "@/components/headers/Header1";
 import Topbar from "@/components/headers/Topbar";
 import Breadcumb from "@/components/productDetails/Breadcumb";
-import Descriptions1 from "@/components/productDetails/descriptions/Descriptions1";
 import Details1 from "@/components/productDetails/details/Details1";
 import RelatedProducts from "@/components/productDetails/RelatedProducts";
 import { allProducts } from "@/data/products";
@@ -24,7 +23,6 @@ export default async function ProductDetailPage({ params }) {
       <Header />
       <Breadcumb product={product} />
       <Details1 product={product} />
-      <Descriptions1 />
       <RelatedProducts />
       <Footer  />
     </>
